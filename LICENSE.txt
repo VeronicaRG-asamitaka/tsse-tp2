@@ -1,11 +1,11 @@
 MIT License
 
-Copyright 2022, Carrera de especializacion en Sistemas Embebidos
+Copyright 2025, Carrera de especializacion en Sistemas Embebidos
 Facultad de Ingeniería
 Universidad de Buenos Aires
 https://fi.uba.ar/
 
-Copyright (c) 2023, Veronica Ruiz Galvan <veronica.ruizgalvan@hotmail.com>
+Copyright (c) 2025, Veronica Ruiz Galvan <veronica.ruizgalvan@hotmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
