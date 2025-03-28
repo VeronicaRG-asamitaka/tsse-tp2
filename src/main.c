@@ -1,5 +1,5 @@
 /************************************************************************************************
-Copyright (c) 2023, Veronica Ruiz Galvan <veronica.ruizgalvan@hotmail.com>
+Copyright (c) 2025, Veronica Ruiz Galvan <veronica.ruizgalvan@hotmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -21,28 +21,16 @@ SPDX-License-Identifier: MIT
 
 /**
  * @file main.c
- * @brief Implementación principal del programa para controlar un LED utilizando GPIO.
- *
- * Este archivo contiene la función principal del sistema, en la cual se crea un objeto `gpio_t`
- * para controlar un LED rojo, configurando el pin correspondiente como salida y cambiando su
- * estado.
+ * @brief -----
  */
 
 /* === Headers files inclusions =============================================================== */
 
-#include "main.h"
-#include "gpio.h"
+#include "leds.h"
 
 /* === Macros definitions ====================================================================== */
 
-/** @brief Puerto en el que se encuentra el led rojo. */
-#define LED_RED_PORT 1
-
-/** @brief Pin de bit en el puerto donde está conectado el led rojo. */
-#define LED_RED_BIT 7
-
 /* === Private data type declarations ========================================================== */
-
 /* === Private variable declarations =========================================================== */
 
 /* === Private function declarations =========================================================== */
@@ -56,22 +44,11 @@ SPDX-License-Identifier: MIT
 /* === Public function implementation ========================================================== */
 
 /**
- * @brief Función principal del programa.
- *
- * Esta función se ejecuta al iniciar el sistema. En ella se crea un objeto `gpio_t` para el
- * control de un led rojo, se configura el pin correspondiente como salida y se ajusta su estado
- * para que esté apagado.
- *
- * - Se crea un objeto `gpio_t` para el led rojo en el puerto y bit especificados.
- * - Se configura el pin como salida.
- * - Se establece el estado del pin en bajo.
- *
- * @return int Valor de retorno: 0 si todo se ejecuta correctamente.
- */
+ * @brief Función principal
+ * */
 int main(void) {
-    gpio_t red_led = gpioCreate(LED_RED_PORT, LED_RED_BIT);
-    gpioSetOutput(red_led, true);
-    gpioSetState(red_led, false);
+
+    return 0;
 }
 
 /* === End of documentation ==================================================================== */
