@@ -1,5 +1,6 @@
-# Trabajo Práctico Número 4
-
+# Trabajo Práctico Número 2
+Este trabajo corresponde al TP2 de la materia de Testing de Software en Sistemas Embebidos.
+Este trabajo siguió la metodología TDD, donde cada funcionalidad fue diseñada a partir de pruebas escritas previamente para un Driver de LEDs.
 ## Uso del repositorio
 
 Este repositorio utiliza [pre-commit](https://pre-commit.com) para validaciones de formato. Para trabajar con el mismo usted debería tener instalado:
