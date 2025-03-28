@@ -54,7 +54,7 @@ extern "C" {
 void LedsInit(uint16_t * adressLeds);
 
 /**
- * @brief Funcion para prender un LED individual
+ * @brief Funcion para encender un LED individual
  *
  * @param numberLed Numero de LED que se desea encender (1-16).
  *
@@ -65,7 +65,7 @@ void LedTurnOnSingle(uint8_t numberLed);
 /**
  * @brief Funcion para apagar un LED individual
  *
- * @param numberLed Numero de LED que se desea encender (1-16).
+ * @param numberLed Numero de LED que se desea apagar (1-16).
  *
  */
 
@@ -74,7 +74,7 @@ void LedTurnOffSingle(uint8_t numberLed);
 /**
  * @brief Funcion para cambiar el estado de todos los LEDs
  *
- * @param stateLeds Estado al que se quieren cambiar todos los LEDs
+ * @param stateLeds Estado al que se quieren cambiar todos los LEDs (0x0000 o 0xFFFF)
  *
  */
 void LedChangeStateAll(uint16_t stateLeds);

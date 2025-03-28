@@ -39,7 +39,7 @@ SPDX-License-Identifier: MIT
 #define BIT_STATUS 1
 /** @brief Constante con el valor minimo de bit */
 #define BIT_MIN 1
-/** @brief Constante con el valor minimo de bit */
+/** @brief Constante con el valor maximo de bit */
 #define BIT_MAX 16
 
 /* === Private data type declarations ========================================================== */
