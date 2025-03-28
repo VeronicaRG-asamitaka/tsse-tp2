@@ -29,18 +29,34 @@ SPDX-License-Identifier: MIT
 #include "leds.h"
 
 /* === Macros definitions ====================================================================== */
-
-/** @brief Puerto en el que se encuentra el led rojo. */
-#define LED_RED_PORT 1
-
-/** @brief Pin de bit en el puerto donde está conectado el led rojo. */
-#define LED_RED_BIT 7
+/** @brief Máscara para apagar todos los LEDs. */
+#define ALL_LEDS_OFF 0x0000
+/** @brief Desplazamiento de los LEDs para obtener la máscara. */
+#define LED_TO_BIT_OFFSET 1
+/** @brief Constante con el primer bit en uno para generar la máscara. */
+#define FIRST_BIT 1
+/** @brief Constante para obtener el estado de un LED. */
+#define BIT_STATUS 1
+/** @brief Constante con el valor minimo de bit */
+#define BIT_MIN 1
+/** @brief Constante con el valor minimo de bit */
+#define BIT_MAX 16
 
 /* === Private data type declarations ========================================================== */
 
 /* === Private variable declarations =========================================================== */
+
+/** @brief Variable privada para almacenar la dirección del puerto de salida. */
 static uint16_t * portAdress;
 /* === Private function declarations =========================================================== */
+
+/**
+ * @brief Funcion privada para convertir el número de un LED a una máscara de bits.
+ *
+ *@param numberLed Número de LED para el que se desea generar la máscara de bits.
+ *@return uint16_t Máscara de bits con 1 en la posición correspondiente al LED.
+ */
+static uint16_t LedToMask(uint8_t numberLed);
 
 /* === Public variable definitions ============================================================= */
 
@@ -48,40 +64,40 @@ static uint16_t * portAdress;
 
 /* === Private function implementation ========================================================= */
 
+uint16_t LedToMask(uint8_t numberLed) {
+    return (FIRST_BIT << (numberLed - LED_TO_BIT_OFFSET));
+}
 /* === Public function implementation ========================================================== */
 
-/**
- * @brief Función principal del programa.
- *
- * Esta función se ejecuta al iniciar el sistema. En ella se crea un objeto `gpio_t` para el
- * control de un led rojo, se configura el pin correspondiente como salida y se ajusta su estado
- * para que esté apagado.
- *
- * - Se crea un objeto `gpio_t` para el led rojo en el puerto y bit especificados.
- * - Se configura el pin como salida.
- * - Se establece el estado del pin en bajo.
- *
- * @return int Valor de retorno: 0 si todo se ejecuta correctamente.
- */
-
- 
- void LedsInit(uint16_t * adressLeds){
+void LedsInit(uint16_t * adressLeds) {
     portAdress = adressLeds;
-    *portAdress = 0;
- }
+    LedChangeStateAll(ALL_LEDS_OFF);
+}
 
- void LedTurnOnSingle(uint8_t numberLed){
-    //if(16 <= numberLed && numberLed >= 1){
-       // *portAdress |=(1 << (numberLed - 1));
-       *portAdress = 0x0008;
+void LedTurnOnSingle(uint8_t numberLed) {
+    if (isLedValid(numberLed)) {
+        *portAdress |= LedToMask(numberLed);
+    }
+}
 
-    //}
- }
+void LedTurnOffSingle(uint8_t numberLed) {
+    if (isLedValid(numberLed)) {
+        *portAdress &= ~(LedToMask(numberLed));
+    }
+}
 
- void LedTurnOffSingle(uint8_t numberLed){
+void LedChangeStateAll(uint16_t stateLeds) {
+    *portAdress = stateLeds;
+}
 
-    //*portAdress &= (1 << (numberLed - 1));
-    *portAdress = 0x0000;
- }
+uint8_t LedGetState(uint8_t numberLedtoGet) {
+    if (isLedValid(numberLedtoGet)) {
+        return ((*portAdress >> (numberLedtoGet - LED_TO_BIT_OFFSET)) & BIT_STATUS);
+    }
+}
+
+uint8_t isLedValid(uint8_t numberLedValid) {
+    return (numberLedValid >= BIT_MIN && numberLedValid <= BIT_MAX);
+}
 
 /* === End of documentation ==================================================================== */

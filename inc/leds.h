@@ -48,28 +48,54 @@ extern "C" {
  * @note Esta funcion debe ser llamada antes de utilizar cualquier otra funcion de la biblioteca.
  *
  * @param leds Puntero al puerto GPIO que controla los LEDs.
- * 
+ *
  */
 
 void LedsInit(uint16_t * adressLeds);
 
 /**
- * @brief Funcion para prender un LED individua
+ * @brief Funcion para prender un LED individual
  *
  * @param numberLed Numero de LED que se desea encender (1-16).
- * 
+ *
  */
 
- void LedTurnOnSingle(uint8_t numberLed);
+void LedTurnOnSingle(uint8_t numberLed);
 
- /**
- * @brief Funcion para prender un LED individua
+/**
+ * @brief Funcion para apagar un LED individual
  *
  * @param numberLed Numero de LED que se desea encender (1-16).
- * 
+ *
  */
 
- void LedTurnOffSingle(uint8_t numberLed);
+void LedTurnOffSingle(uint8_t numberLed);
+
+/**
+ * @brief Funcion para cambiar el estado de todos los LEDs
+ *
+ * @param stateLeds Estado al que se quieren cambiar todos los LEDs
+ *
+ */
+void LedChangeStateAll(uint16_t stateLeds);
+
+/**
+ * @brief Funcion para obtener el estado de un LED
+ *
+ * @param numberLedtoGet Numero de LED del cual se quiere obtener su estado (1-16)
+ *
+ */
+uint8_t LedGetState(uint8_t numberLedtoGet);
+
+/**
+* @brief Funcion para comprobar si el número de LED está dentro de rango válido.
+*
+*@param numberLedValid Número de LED.
+
+*@return uint16_t Regresa 1 si es válido, 0 si es inválido.
+*
+*/
+uint8_t isLedValid(uint8_t numberLedValid);
 
 /* === End of documentation ==================================================================== */
 
