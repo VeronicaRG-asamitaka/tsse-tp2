@@ -63,13 +63,6 @@ void setUp(void) {
     LedsInit(&leds_virtuals);
 }
 
-/**
- * @brief Función principal del programa.
- *
- *
- * @return int Valor de retorno: 0 si todo se ejecuta correctamente.
- */
-
 //! * @test 1. Con la inicialización todos los LEDs quedan apagados.
 void test_todos_los_leds_inician_apagados(void) {
     uint16_t leds_virtuals = 0xFFFF;
